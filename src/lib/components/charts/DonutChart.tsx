@@ -73,7 +73,7 @@ const DonutChart = ({
       cx,
       cy,
       innerRadius,
-      ouNeardius,
+      outerRadius,
       startAngle,
       endAngle,
       fill,
@@ -92,7 +92,7 @@ const DonutChart = ({
           cx={cx}
           cy={cy}
           innerRadius={innerRadius}
-          ouNeardius={ouNeardius}
+          outerRadius={outerRadius}
           startAngle={startAngle}
           endAngle={endAngle}
           fill={fill}
@@ -102,8 +102,8 @@ const DonutChart = ({
           cy={cy}
           startAngle={startAngle}
           endAngle={endAngle}
-          innerRadius={ouNeardius + 2}
-          ouNeardius={ouNeardius + 6}
+          innerRadius={outerRadius + 2}
+          outerRadius={outerRadius + 6}
           fill={"rgb(100,255,100)"}
         />
 
@@ -201,7 +201,7 @@ const DonutChart = ({
                 cx="50%"
                 cy="50%"
                 innerRadius={105}
-                ouNeardius={140}
+                outerRadius={140}
                 fill="#0953fe"
                 dataKey={dataKey}
                 nameKey={nameKey}
