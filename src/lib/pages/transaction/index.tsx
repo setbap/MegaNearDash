@@ -201,7 +201,7 @@ according section defined in above, i prepare some of static about these topics.
             }
             change={transactionsTodayInfo.data["change (%) Transactions"]}
             changeUnit={"%"}
-            hasArrowIcon={false}
+            hasArrowIcon
             link={transactionsTodayInfo.key}
           />
 
@@ -215,13 +215,14 @@ according section defined in above, i prepare some of static about these topics.
             }
             change={transactionsTodayInfo.data["change (%) Active Wallets"]}
             changeUnit={"%"}
-            hasArrowIcon={false}
+            hasArrowIcon
             link={transactionsTodayInfo.key}
           />
 
           <StatsCard
             stat={transactionsTodayInfo.data["Today TX Fee"]}
             title={transactionsTodayInfoNames[2]}
+            decimal={3}
             status={
               transactionsTodayInfo.data["change (%) TX Fee"] >= 0
                 ? "inc"
@@ -229,7 +230,7 @@ according section defined in above, i prepare some of static about these topics.
             }
             change={transactionsTodayInfo.data["change (%) TX Fee"]}
             changeUnit={"%"}
-            hasArrowIcon={false}
+            hasArrowIcon
             link={transactionsTodayInfo.key}
           />
 
@@ -243,7 +244,7 @@ according section defined in above, i prepare some of static about these topics.
             }
             change={transactionsTodayInfo.data["change (%) Success Rate"]}
             changeUnit={"%"}
-            hasArrowIcon={false}
+            hasArrowIcon
             link={transactionsTodayInfo.key}
           />
         </SimpleGrid>

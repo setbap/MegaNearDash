@@ -129,7 +129,7 @@ export const StatsCard = (props: StatsCardProps) => {
   let splitedChange = null;
   if (typeof change === "number") {
     splitedChange = millify(change, {
-      precision: 1,
+      precision: decimal,
       decimalSeparator: ".",
     }).split(".");
   }
