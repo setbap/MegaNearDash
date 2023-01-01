@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, color, SimpleGrid } from "@chakra-ui/react";
 import { StatsCard } from "lib/components/charts/StateCard";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
@@ -9,6 +9,8 @@ import DonutChart from "lib/components/charts/DonutChart";
 import StackedAreaChart from "lib/components/charts/StackedAreaGraph";
 import { StateCardRemoteData } from "lib/components/charts/StateCardRemoteData";
 import HeaderSection from "lib/components/basic/HeaderSection";
+import MultiChartBox from "lib/components/charts/MultiLineChart";
+import ChartBox from "lib/components/charts/LineChart";
 
 const colors = [
   "#ff5722",
@@ -25,9 +27,21 @@ const colors = [
   "#607d8b",
 ];
 
-const Staking = ({}: StakingProps): JSX.Element => {
-  // const averageweeklytxcounttxvolumeanduniqueusersNames =
-  //   averageweeklytxcounttxvolumeanduniqueusers.title.split(",");
+const Staking = ({
+  stakingOvertime,
+  stakingDailyAverage,
+  stakingActiveStakingPool,
+  stakingTop10PoolsTransaction,
+  stakingTop10PoolsUniqueStakers,
+  stakingTop10PoolsVolume,
+  stakingTop10PoolsWithDayTransaction,
+  stakingTop10PoolsWithDayUniqueStakers,
+  stakingTop10PoolsWithDayUniqueVolume,
+  stakingTop30HighestPools,
+  stakingTopWallets,
+}: StakingProps): JSX.Element => {
+  const stakingOvertimeNames = stakingOvertime.title.split(",");
+  const stakingDailyAverageNames = stakingDailyAverage.title.split(",");
 
   return (
     <>
@@ -54,45 +68,11 @@ const Staking = ({}: StakingProps): JSX.Element => {
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
         <HeaderSection title="Near Staking ">
           {`
-in this page we review all information all about staking in Near. after Near fall and brith of Near(2) most of Near's Airdroped to old user and this airdropd token 
-divided in 4 part and just 1/4 of that availble for user and remaining staked and distributed according schadule
 
 `}
         </HeaderSection>
         <Box pt={"4"}></Box>
-        <HeaderSection title="Glance">
-          {`
-according section defined in above, i prepare some of static about these topics. all data came from Flipside data and with click of title of each item can see query these data in Flipside Crypto
-`}
-        </HeaderSection>
-        <SimpleGrid
-          my={"6"}
-          columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
-          spacing={{ base: 5, lg: 8 }}
-        >
-          {/* <StateCardRemoteData
-            url="https://phoenix-lcd.Near.dev/cosmos/staking/v1beta1/pool"
-            link="https://docs.Near.money/develop/swagger"
-            status="unchanged"
-            title={"Not Bonded Token In Pool"}
-            getStat={(data) => data.pool.not_bonded_tokens / 1e6}
-          /> */}
-        </SimpleGrid>
-        <SimpleGrid
-          my={"6"}
-          columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
-          spacing={{ base: 5, lg: 8 }}
-        >
-          {/* <StatsCard
-            stat={totalInfo.data.supplyTotal}
-            title={"Total Supply"}
-            status="inc"
-            unit=""
-            isExternalLink
-            hasArrowIcon={false}
-            link={totalInfo.key}
-          /> */}
-        </SimpleGrid>
+
         <SimpleGrid
           position={"relative"}
           transition={"all 0.9s ease-in-out"}
@@ -102,11 +82,173 @@ according section defined in above, i prepare some of static about these topics.
           columns={{ sm: 1, md: 1, lg: 2, "2xl": 3 }}
           spacing={{ base: 1, md: 2, lg: 4 }}
         >
-          <HeaderSection title="Tops ">
-            {`
-review top information or actor or validators in Near
-`}
-          </HeaderSection>
+          <HeaderSection title="Staking Over time" />
+          {["cumTXCount", "tXCount", "cumVolume", "uniqueWallet", "volume"].map(
+            (item, index) => (
+              <StackedAreaChart
+                key={index}
+                values={stakingOvertime.data[item]}
+                queryLink={stakingOvertime.key}
+                modalInfo=""
+                title={stakingOvertimeNames[index]}
+                baseSpan={1}
+                dataKey="Name"
+                oyLabel="$Near"
+                oxLabel="Action"
+                labels={stakingOvertime.data.actions.map(
+                  (item: string, index: number) => ({
+                    key: item,
+                    color: colors[index % colors.length],
+                  })
+                )}
+              />
+            )
+          )}
+
+          <HeaderSection title="Daily average" />
+          {[
+            "AVG TX volume",
+            "AVG tx count",
+            "AVG unique wallet",
+            "AVG volume",
+          ].map((item, index) => (
+            <BarGraph
+              key={item}
+              values={stakingDailyAverage.data}
+              queryLink={stakingDailyAverage.key}
+              modalInfo=""
+              isNotDate
+              title={stakingDailyAverageNames[index]}
+              baseSpan={1}
+              dataKey="Actions"
+              oyLabel="$Luna"
+              oxLabel="Action"
+              labels={[
+                {
+                  key: item,
+                  color: colors[index],
+                },
+              ]}
+            />
+          ))}
+
+          <HeaderSection title="Active Staking Pool" />
+          <ChartBox
+            baseSpan={3}
+            customColor={colors[2]}
+            xAxisDataKey={"Day"}
+            areaDataKey={"Active Staking Pool"}
+            title={stakingActiveStakingPool.title}
+            queryLink={stakingActiveStakingPool.key}
+            data={stakingActiveStakingPool.data}
+          />
+
+          <HeaderSection title="Top 10 pools" />
+          <DonutChart
+            queryLink={stakingTop10PoolsTransaction.key}
+            data={stakingTop10PoolsTransaction.data}
+            modalInfo=""
+            baseSpan={1}
+            title={stakingTop10PoolsTransaction.title}
+            nameKey="Pool name"
+            dataKey="tx count"
+          />
+          <DonutChart
+            queryLink={stakingTop10PoolsUniqueStakers.key}
+            data={stakingTop10PoolsUniqueStakers.data}
+            modalInfo=""
+            baseSpan={1}
+            title={stakingTop10PoolsUniqueStakers.title}
+            nameKey="Pool name"
+            dataKey="Unique wallet"
+          />
+          <DonutChart
+            queryLink={stakingTop10PoolsVolume.key}
+            data={stakingTop10PoolsVolume.data}
+            modalInfo=""
+            baseSpan={1}
+            title={stakingTop10PoolsVolume.title}
+            nameKey="Pool name"
+            dataKey="Volume"
+          />
+
+          <HeaderSection title="Weekly top 10 pools" />
+
+          <BarGraph
+            values={stakingTop10PoolsWithDayTransaction.data.txCount}
+            queryLink={stakingTop10PoolsWithDayTransaction.key}
+            modalInfo=""
+            title={stakingTop10PoolsWithDayTransaction.title}
+            baseSpan={3}
+            dataKey="Name"
+            oyLabel=""
+            oxLabel="Day"
+            hideLegend
+            labels={stakingTop10PoolsWithDayTransaction.data.actions.map(
+              (item: string, index: number) => ({
+                key: item,
+                color: colors[index % colors.length],
+              })
+            )}
+          />
+
+          <BarGraph
+            values={stakingTop10PoolsWithDayUniqueStakers.data.uniqueWallet}
+            queryLink={stakingTop10PoolsWithDayUniqueStakers.key}
+            modalInfo=""
+            title={stakingTop10PoolsWithDayUniqueStakers.title}
+            baseSpan={3}
+            dataKey="Name"
+            oyLabel=""
+            oxLabel="Day"
+            hideLegend
+            labels={stakingTop10PoolsWithDayUniqueStakers.data.actions.map(
+              (item: string, index: number) => ({
+                key: item,
+                color: colors[index % colors.length],
+              })
+            )}
+          />
+
+          <BarGraph
+            values={stakingTop10PoolsWithDayUniqueVolume.data.volume}
+            queryLink={stakingTop10PoolsWithDayUniqueVolume.key}
+            modalInfo=""
+            title={stakingTop10PoolsWithDayUniqueVolume.title}
+            baseSpan={3}
+            dataKey="Name"
+            oyLabel=""
+            oxLabel="Day"
+            hideLegend
+            labels={stakingTop10PoolsWithDayUniqueVolume.data.actions.map(
+              (item: string, index: number) => ({
+                key: item,
+                color: colors[index % colors.length],
+              })
+            )}
+          />
+
+          <HeaderSection title="Top 30 pools based on current balance" />
+          <BarGraph
+            values={stakingTop30HighestPools.data}
+            queryLink={stakingTop30HighestPools.key}
+            isNotDate
+            modalInfo=""
+            title={stakingTop30HighestPools.title}
+            baseSpan={3}
+            dataKey="Pool name"
+            oyLabel=""
+            oxLabel="Pool name"
+            hideLegend
+            labels={[
+              {
+                key: "Current stake amount",
+                color: colors[2],
+              },
+            ]}
+          />
+
+          <HeaderSection title="Top stakers" />
         </SimpleGrid>
       </Box>
     </>

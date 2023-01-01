@@ -39,7 +39,7 @@ interface Props {
   chartColors?: string[];
   multiOff?: boolean;
   isNotDate?: boolean;
-  defultSelectedRange?: number | string;
+  defaultSelectedRange?: number | string;
 }
 
 const MultiChartBox = ({
@@ -52,7 +52,7 @@ const MultiChartBox = ({
   data,
   title,
   modalInfo,
-  defultSelectedRange = "all",
+  defaultSelectedRange: defaultSelectedRange = "all",
   chartColors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"],
 }: Props) => {
   const [spanItem, setSpanItem] = useState(GRID_ITEM_SIZE[baseSpan - 1]);
@@ -61,7 +61,7 @@ const MultiChartBox = ({
   const textColor = useColorModeValue("gray.900", "gray.100");
   const chartRef = useRef<null | HTMLDivElement>(null);
   const [selectedDate, setSelectedDate] = useState<number | string>(
-    defultSelectedRange
+    defaultSelectedRange
   );
   const [chartData, setChartData] = useState(data);
   const filterDateAccordingDay = (numberOfDays: number) => {
