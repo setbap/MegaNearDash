@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import {
   AreaChart,
-  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -41,12 +40,12 @@ const StackedAreaChart = ({
   isNotDate = false,
   monthlyValues,
   extraInfoToTooltip,
-  defualtTime = "day",
+  defaultTime = "day",
   queryLink,
   dataPrecision = 2,
   infoSizePercentage = 50,
 }: {
-  defualtTime?: "day" | "month";
+  defaultTime?: "day" | "month";
   title: string;
   dataKey: string;
   oxLabel: string;
@@ -65,10 +64,10 @@ const StackedAreaChart = ({
   const chartRef = useRef<null | HTMLDivElement>(null);
   const hasMonthly = !isNotDate && monthlyValues && monthlyValues.length > 0;
   const [chartData, setChartData] = useState(
-    defualtTime === "day" ? values : monthlyValues
+    defaultTime === "day" ? values : monthlyValues
   );
   const [chartTimeFrame, setChartTimeFrame] = useState<"day" | "month">(
-    defualtTime
+    defaultTime
   );
   const [spanItem, setSpanItem] = useState(GRID_ITEM_SIZE[baseSpan - 1]);
   const [barProps, setBarProps] = useState(
@@ -139,7 +138,8 @@ const StackedAreaChart = ({
       bgColor={bgCard}
       shadow="base"
       transition={"all 0.5s "}
-      _hover={{ boxShadow: "var(--chakra-shadows-lg)" }}
+      border={"2px solid transparent"}
+      _hover={{ boxShadow: "var(--chakra-shadows-lg)", borderColor: "#444" }}
       borderRadius={"2xl"}
       width="100%"
       flex={2}

@@ -242,6 +242,6 @@ export const getStakingTop30HighestPools = () =>
 
 export const getStakingTopWallets = () =>
   getSimpleArrayData<StakingTopStakers, StakingTopStakers>(
-    "5d43109b-1730-4d81-8dcb-6a0891fdf859",
+    "394241cd-4a73-42bb-ba22-f33145e09821",
     "Top 30 Pools based on current balance"
   );

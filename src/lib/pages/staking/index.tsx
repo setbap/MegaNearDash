@@ -1,16 +1,17 @@
-import { Box, color, SimpleGrid } from "@chakra-ui/react";
-import { StatsCard } from "lib/components/charts/StateCard";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
-import LineChartWithBar from "lib/components/charts/LineChartWithBar";
 import { StakingProps } from "pages/staking";
 import BarGraph from "lib/components/charts/BarGraph";
 import DonutChart from "lib/components/charts/DonutChart";
 import StackedAreaChart from "lib/components/charts/StackedAreaGraph";
-import { StateCardRemoteData } from "lib/components/charts/StateCardRemoteData";
 import HeaderSection from "lib/components/basic/HeaderSection";
-import MultiChartBox from "lib/components/charts/MultiLineChart";
 import ChartBox from "lib/components/charts/LineChart";
+import { ColumnDef } from "@tanstack/react-table";
+import millify from "millify";
+
+import { StakingTopStakers } from "lib/types/types/staking";
+import TableBox from "lib/components/charts/TableBox";
 
 const colors = [
   "#ff5722",
@@ -25,6 +26,42 @@ const colors = [
   "#2196f3",
   "#009688",
   "#607d8b",
+];
+
+const colDef: ColumnDef<StakingTopStakers>[] = [
+  {
+    accessorFn: (row) => row.Staker,
+    enableSorting: false,
+    id: "Staker",
+    cell: (info) => info.getValue(),
+    header: () => <span>Staker</span>,
+  },
+  {
+    accessorFn: (row) => row["Staked Balance"],
+    id: "Staked Balance",
+    cell: (info) =>
+      millify(info.getValue() as number, {
+        precision: 2,
+        decimalSeparator: ".",
+      }),
+    header: () => <span>Staked Balance</span>,
+  },
+  {
+    accessorFn: (row) => row["% Staked Supply"],
+    id: "Staked Supply",
+    cell: (info) =>
+      millify(info.getValue() as number, {
+        precision: 2,
+        decimalSeparator: ".",
+      }) + " %",
+    header: (props) => <span>{props.header.id}</span>,
+  },
+  {
+    accessorFn: (row) => row["Staking Pools"],
+    id: "Staking Pools",
+    cell: (info) => info.getValue(),
+    header: (props) => <span>{props.header.id}</span>,
+  },
 ];
 
 const Staking = ({
@@ -66,17 +103,17 @@ const Staking = ({
         }}
       />
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
-        <HeaderSection title="Near Staking ">
+        <HeaderSection title="Near Staking">
           {`
-
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsa cumque inventore fugiat modi qui reiciendis possimus iste blanditiis, dolorum similique explicabo eius ipsum veniam aspernatur ut, laborum consectetur sapiente. Aspernatur ipsum odit dolorem harum vero id! Distinctio, libero a.
 `}
         </HeaderSection>
-        <Box pt={"4"}></Box>
 
         <SimpleGrid
           position={"relative"}
           transition={"all 0.9s ease-in-out"}
-          py={"6"}
+          pt={"4"}
+          pb={"6"}
           gap={4}
           zIndex={100}
           columns={{ sm: 1, md: 1, lg: 2, "2xl": 3 }}
@@ -249,6 +286,16 @@ const Staking = ({
           />
 
           <HeaderSection title="Top stakers" />
+          <TableBox
+            customHeaderColor={colors[2]}
+            queryLink={stakingTopWallets.key}
+            title={stakingTopWallets.title}
+            baseSpan={3}
+            tablePageSize={20}
+            modalInfo={``}
+            data={stakingTopWallets.data}
+            columnsDef={colDef}
+          />
         </SimpleGrid>
       </Box>
     </>

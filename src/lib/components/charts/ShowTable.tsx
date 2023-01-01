@@ -4,7 +4,6 @@ import {
   FormControl,
   Input,
   Popover,
-  PopoverArrow,
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
@@ -26,6 +25,7 @@ import {
   InputRightAddon,
   HStack,
   Td,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import FocusLock from "react-focus-lock";
 
@@ -157,7 +157,8 @@ export const ShowTable = React.memo(function TableComponent<T>({
                   }
                   return onRowClick(row.original as T);
                 }}
-                _hover={{ bg: "#242424" }}
+                height="40px"
+                _hover={{ bg: useColorModeValue("#eee", "#282828") }}
                 key={row.id}
               >
                 {row.getVisibleCells().map((cell) => (
@@ -188,6 +189,7 @@ export const ShowTable = React.memo(function TableComponent<T>({
       </TableContainer>
 
       <HStack
+        data-html2canvas-ignore
         width={"full"}
         mt="4"
         justifyContent={"space-between"}
@@ -300,7 +302,7 @@ function DebouncedInput({
   }, [value]);
 
   return (
-    <FormControl>
+    <FormControl data-html2canvas-ignore>
       <FormLabel htmlFor={label}>{label}</FormLabel>
       <Input
         type={type}
@@ -319,6 +321,7 @@ const FilterContainer = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Popover
+        data-html2canvas-ignore
         isOpen={isOpen}
         initialFocusRef={firstFieldRef}
         onOpen={onOpen}
@@ -329,16 +332,21 @@ const FilterContainer = ({ children }: { children: JSX.Element }) => {
       >
         <PopoverTrigger>
           <IconButton
+            data-html2canvas-ignore
             aria-label="open filter column"
             size="sm"
             variant={"ghost"}
             icon={<AiFillSetting />}
           />
         </PopoverTrigger>
-        <PopoverContent bg="#191919" p={3}>
+        <PopoverContent
+          data-html2canvas-ignore
+          bg={useColorModeValue("white", "#232323")}
+          p={3}
+        >
           <FocusLock returnFocus persistentFocus={false}>
             <PopoverCloseButton p={2} />
-            <Stack mt={2} spacing={3}>
+            <Stack data-html2canvas-ignore mt={2} spacing={3}>
               {children}
               <Button onClick={onClose}>Close</Button>
             </Stack>

@@ -5,7 +5,6 @@ import {
 } from "@chakra-ui/react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { DefaultSeo } from "next-seo";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import defaultSEOConfig from "../../next-seo.config";
 import Layout from "lib/components/layout";
