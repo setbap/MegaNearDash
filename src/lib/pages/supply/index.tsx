@@ -1,14 +1,13 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, color, SimpleGrid } from "@chakra-ui/react";
 import ChartBox from "lib/components/charts/LineChart";
 import { StatsCard } from "lib/components/charts/StateCard";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
 
-import { DevelopmentProps } from "pages/development";
+import { SupplyProps } from "pages/supply";
 import DonutChart from "lib/components/charts/DonutChart";
 import BarGraph from "lib/components/charts/BarGraph";
 import HeaderSection from "lib/components/basic/HeaderSection";
-import LineChartWithBar from "lib/components/charts/LineChartWithBar";
 
 const colors = [
   "#ff5722",
@@ -26,18 +25,20 @@ const colors = [
 ];
 
 const Development = ({
-  developmentNewContracts,
-}: DevelopmentProps): JSX.Element => {
-  const developmentNewContractsNames = developmentNewContracts.title.split(",");
+  supplyOverTime,
+  supplyTotal,
+}: SupplyProps): JSX.Element => {
+  // const developmentMostUsedContractsNames =
+  //   developmentMostUsedContracts.title.split(",");
 
   return (
     <>
       <NextSeo
-        title={`Near | Development`}
+        title={`Near | Supply`}
         description={`Track the latest stats and trends on ${names.BLOCKCHAIN}`}
         openGraph={{
           url: `https://${names.SITE_URL}/`,
-          title: `Near  | Development`,
+          title: `Near  | Supply`,
           description: `Track the latest stats and trends on ${names.BLOCKCHAIN}`,
           images: [
             {
@@ -53,14 +54,7 @@ const Development = ({
         }}
       />
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
-        <HeaderSection title="Near Development ">
-          {`
-in this page we review all information about Near Smart Contract Development and increase usage of different smart contract in Near Network 
-
-
-but before deep dive into chart i prepare some statics to see status of network at the glance.
-`}
-        </HeaderSection>
+        <HeaderSection title="Near Supply " />
         <Box pt={"4"}></Box>
         <HeaderSection title="Glance">
           {`
@@ -71,41 +65,35 @@ according section defined in above, i prepare some of static about these topics.
           my={"6"}
           columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
           spacing={{ base: 5, lg: 8 }}
-        ></SimpleGrid>
-        <HeaderSection title="Development Contracts ">
-          {`
-Development of Contracts show how much of compatibility of one network is used by developers. increasing number of new smart contract show windows of new idea in network and help growth faster 
-`}
-        </HeaderSection>
+        >
+          <StatsCard
+            stat={supplyTotal.data["Total Supply"]}
+            title={supplyTotal.title}
+            status="inc"
+            hasArrowIcon={false}
+            link={supplyTotal.key}
+          />
+        </SimpleGrid>
+
         <SimpleGrid
           position={"relative"}
           transition={"all 0.9s ease-in-out"}
-          py={"6"}
+          pb={"6"}
           gap={4}
           zIndex={100}
           columns={{ sm: 1, md: 1, lg: 2, "2xl": 3 }}
           spacing={{ base: 1, md: 2, lg: 4 }}
         >
-          <LineChartWithBar
-            data={developmentNewContracts.data}
-            queryLink={developmentNewContracts.key}
-            title={developmentNewContractsNames[1]}
-            baseSpan={3}
-            customColor={colors[0]}
-            barColor={colors[2]}
-            xAxisDataKey="Day"
-            barDataKey={"Deployed Contract"}
-            lineDataKey="Avg Deployed Contract"
-          />
+          <HeaderSection title="Total supply over time" />
 
           <ChartBox
-            data={developmentNewContracts.data}
-            queryLink={developmentNewContracts.key}
-            title={developmentNewContractsNames[0]}
+            xAxisDataKey={"Day"}
+            customColor={colors[4]}
+            areaDataKey={"Total Supply"}
+            title={supplyOverTime.title}
+            queryLink={supplyOverTime.key}
+            data={supplyOverTime.data}
             baseSpan={3}
-            customColor={colors[0]}
-            xAxisDataKey="Day"
-            areaDataKey="Cum Deployed Contract"
           />
         </SimpleGrid>
       </Box>
