@@ -9,7 +9,6 @@ import HeaderSection from "lib/components/basic/HeaderSection";
 import ChartBox from "lib/components/charts/LineChart";
 import { ColumnDef } from "@tanstack/react-table";
 import millify from "millify";
-
 import { StakingTopStakers } from "lib/types/types/staking";
 import TableBox from "lib/components/charts/TableBox";
 
@@ -76,6 +75,7 @@ const Staking = ({
   stakingTop10PoolsWithDayUniqueVolume,
   stakingTop30HighestPools,
   stakingTopWallets,
+  stakingNearOvertime,
 }: StakingProps): JSX.Element => {
   const stakingOvertimeNames = stakingOvertime.title.split(",");
   const stakingDailyAverageNames = stakingDailyAverage.title.split(",");
@@ -120,6 +120,17 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsa cumque inv
           spacing={{ base: 1, md: 2, lg: 4 }}
         >
           <HeaderSection title="Staking Over time" />
+
+          <ChartBox
+            xAxisDataKey={"Day"}
+            areaDataKey={"Staked $NEAR"}
+            title={stakingNearOvertime.title}
+            baseSpan={1}
+            customColor={colors[0]}
+            queryLink={stakingNearOvertime.key}
+            data={stakingNearOvertime.data}
+          />
+
           {["cumTXCount", "tXCount", "cumVolume", "uniqueWallet", "volume"].map(
             (item, index) => (
               <StackedAreaChart

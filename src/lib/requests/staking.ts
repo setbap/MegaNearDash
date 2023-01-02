@@ -2,6 +2,7 @@ import { ReturnDataType } from "lib/types/base";
 import {
   StakingActiveStakingPool,
   StakingDailyAverage,
+  StakingNearOvertime,
   StakingOvertime,
   StakingTop10Pools,
   StakingTop10PoolsWithDay,
@@ -11,6 +12,13 @@ import {
 import { getSimpleArrayData, pivotData } from "./utils";
 
 // 1
+export const getStakingNearOvertime = () =>
+  getSimpleArrayData<StakingNearOvertime, StakingNearOvertime>(
+    "06205f7a-6d43-4875-9373-d017fbf14b13",
+    "Staked $NEAR over Time",
+    "Day"
+  );
+
 const _getStakingOvertime = () =>
   getSimpleArrayData<StakingOvertime, StakingOvertime>(
     "8102dd8e-0ea3-45f4-bb26-b01aebd02df2",

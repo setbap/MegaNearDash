@@ -1,3 +1,8 @@
+export interface StakingNearOvertime {
+  Day: string;
+  "Staked $NEAR": number;
+}
+
 export interface StakingOvertime {
   Day: string;
   Actions: string;
