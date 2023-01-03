@@ -104,7 +104,7 @@ export const ShowTable = React.memo(function TableComponent<T>({
   });
   return (
     <>
-      <TableContainer pt={"2"} pb="4" >
+      <TableContainer ml={'0'} width={{ "base": 'calc(100vw - 80px)', md: 'calc(100vw - 132px)' }} pt={"2"} pb="4" >
         <ChTable variant="simple">
           <Thead
             borderTopRadius={"sm"}
@@ -162,7 +162,7 @@ export const ShowTable = React.memo(function TableComponent<T>({
                 key={row.id}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <Td border={"none"} p="1" key={cell.id}>
+                  <Td border={"none"} key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </Td>
                 ))}
@@ -190,9 +190,10 @@ export const ShowTable = React.memo(function TableComponent<T>({
 
       <HStack
         data-html2canvas-ignore
-        width={"full"}
+        flexDir={{ 'base': 'column', md: 'row' }}
+        gap={'4'}
         mt="4"
-        justifyContent={"space-between"}
+        justifyContent={"start"}
         spacing={4}
       >
         <InputGroup w={"160px"} rounded={"lg"} overflow="hidden" size="sm">
