@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const AnimatedBox = motion(Box);
 function PageLoading() {
   const router = useRouter();
 
@@ -11,10 +12,11 @@ function PageLoading() {
 
   useEffect(() => {
     const handleStart = (url: string) => {
-      return url !== router.route && url !== "/about" && setLoading(true);
+      console.log(url);
+      return url !== router.asPath && url !== "/about" && setLoading(true);
     };
     const handleComplete = (url: string) =>
-      url === router.route && setLoading(false);
+      url === router.asPath && setLoading(false);
 
     router.events.on("routeChangeStart", handleStart);
     router.events.on("routeChangeComplete", handleComplete);
@@ -25,7 +27,7 @@ function PageLoading() {
       router.events.off("routeChangeComplete", handleComplete);
       router.events.off("routeChangeError", handleComplete);
     };
-  }, []);
+  });
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -60,7 +62,7 @@ function PageLogoWithLoading() {
       >
         <Image
           src="/og_big.png"
-          alt="Near dashboard logo"
+          alt="terra dashboard logo"
           width={100}
           height={100}
         />

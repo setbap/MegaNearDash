@@ -104,8 +104,8 @@ export const ShowTable = React.memo(function TableComponent<T>({
   });
   return (
     <>
-      <TableContainer pt={"2"} pb="4" w="full">
-        <ChTable overflow={"hidden"} variant="simple">
+      <TableContainer pt={"2"} pb="4" >
+        <ChTable variant="simple">
           <Thead
             borderTopRadius={"sm"}
             overflow="hidden"
@@ -126,9 +126,9 @@ export const ShowTable = React.memo(function TableComponent<T>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                       <small>
                         {" "}
                         {!!header.column.getFilterValue() &&
@@ -177,9 +177,9 @@ export const ShowTable = React.memo(function TableComponent<T>({
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.footer,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.footer,
+                        header.getContext()
+                      )}
                   </Th>
                 ))}
               </Tr>
@@ -394,11 +394,10 @@ function Filter({
                 old?.[1],
               ])
             }
-            placeholder={`Min ${
-              column.getFacetedMinMaxValues()?.[0]
-                ? `(${column.getFacetedMinMaxValues()?.[0]})`
-                : ""
-            }`}
+            placeholder={`Min ${column.getFacetedMinMaxValues()?.[0]
+              ? `(${column.getFacetedMinMaxValues()?.[0]})`
+              : ""
+              }`}
           />
           <DebouncedInput
             label={`${column.id as string} (max)`}
@@ -412,11 +411,10 @@ function Filter({
                 value,
               ])
             }
-            placeholder={`Max ${
-              column.getFacetedMinMaxValues()?.[1]
-                ? `(${column.getFacetedMinMaxValues()?.[1]})`
-                : ""
-            }`}
+            placeholder={`Max ${column.getFacetedMinMaxValues()?.[1]
+              ? `(${column.getFacetedMinMaxValues()?.[1]})`
+              : ""
+              }`}
           />
         </Stack>
       </Box>
