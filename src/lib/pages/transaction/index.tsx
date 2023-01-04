@@ -64,12 +64,14 @@ const Governance = ({
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
         <HeaderSection title="Near Transaction">
           {`
-in this page we review all information about Near Transaction in three topic:
-- Transaction Count and Status
-- Transaction Fee
-- Transaction Per Second (TPS)
-- Age of Blocks
-but before deep dive into chart i prepare some statics to see status of network at the glance.
+The following topics are shown on this page:
+* __Transactions__ : Number of transactions made on a blockchain.
+* __Active Wallets__ : Number of those wallets made at least a transaction during curtain period.
+* __New Wallets__ : Number of those wallets made their first transactions.
+* __Success Rate__ : The ratio of successful to unsuccessful transactions in a blockchain. That is, the number of successful transactions divided by the total number of transactions multiplied by 100.
+* __Fee__ : A transaction fee is a small fee that is charged when a transaction is made. This fee is used to reward miners or validators who help confirm the transaction and secure the network. Total fee is the total USD spent during a certain period. Transaction fee is the average USD spent to made a transaction.
+* __Transactions Per Second (TPS)__ : Using this metric, we can determine how quickly a blockchain network processes transactions. Count the number of transactions per second.
+* __Block time__ : Block time is the average time it takes for a new block of transactions to be added to a blockchain. So we measure the time (in sec) between two consecutive blocks.
 `}
         </HeaderSection>
         <Box pt={"4"}></Box>
@@ -101,18 +103,18 @@ according section defined in above, i prepare some of static about these topics.
           />
 
           <StatsCard
-            stat={transactionsTotalInfo.data["Active users"]}
-            title={transactionsTotalInfoNames[1]}
-            status="inc"
-            hasArrowIcon={false}
-            link={transactionsTotalInfo.key}
-          />
-          <StatsCard
             stat={transactionsAVGInfo.data["AVG Active users"]}
             title={transactionsAVGInfoNames[0]}
             status="inc"
             hasArrowIcon={false}
             link={transactionsAVGInfo.key}
+          />
+          <StatsCard
+            stat={transactionsTotalInfo.data["Active users"]}
+            title={transactionsTotalInfoNames[1]}
+            status="inc"
+            hasArrowIcon={false}
+            link={transactionsTotalInfo.key}
           />
           <StatsCard
             stat={transactionsNewWallet.data.at(-1)?.["AVG New wallet"] ?? 76.4}
@@ -259,7 +261,7 @@ transaction status define as whether a transaction successfully done or transact
           spacing={{ base: 1, md: 2, lg: 4 }}
         >
 
-          <HeaderSection title="1." />
+          <HeaderSection title="Transactions" />
           <ChartBox
             data={transactionsTXInfo.data}
             queryLink={transactionsTXInfo.key}
@@ -269,8 +271,6 @@ transaction status define as whether a transaction successfully done or transact
             xAxisDataKey="Day"
             areaDataKey="Cum tx count"
           />
-
-          <HeaderSection title="2." />
           <LineChartWithBar
             data={transactionsTXInfo.data}
             queryLink={transactionsTXInfo.key}
@@ -283,6 +283,9 @@ transaction status define as whether a transaction successfully done or transact
             lineDataKey="AVG tx count"
             additionalLineKey={["MA7 tx count"]}
           />
+
+          <HeaderSection title="Active Wallets" />
+
           <LineChartWithBar
             data={transactionsTXInfo.data}
             queryLink={transactionsTXInfo.key}
@@ -296,7 +299,7 @@ transaction status define as whether a transaction successfully done or transact
           />
 
 
-          <HeaderSection title="3." />
+          <HeaderSection title="New Wallets" />
           <LineChartWithBar
             data={transactionsNewWallet.data}
             queryLink={transactionsNewWallet.key}
@@ -320,7 +323,7 @@ transaction status define as whether a transaction successfully done or transact
           />
 
 
-          <HeaderSection title="4." />
+          <HeaderSection title="Success Rate" />
           <LineChartWithBar
             data={transactionsTXInfo.data}
             queryLink={transactionsTXInfo.key}
@@ -333,7 +336,7 @@ transaction status define as whether a transaction successfully done or transact
             lineDataKey="AVG Success Rate"
           />
 
-          <HeaderSection title="5." />
+          <HeaderSection title="Fee" />
           <LineChartWithBar
             data={transactionsTXInfo.data}
             queryLink={transactionsTXInfo.key}
@@ -358,7 +361,7 @@ transaction status define as whether a transaction successfully done or transact
             lineDataKey="AVG tx fee per day"
           />
 
-          <HeaderSection title="6. Transaction TPS" />
+          <HeaderSection title="Transactions Per Second (TPS)" />
           <LineChartWithBar
             data={transactionsTPS.data}
             queryLink={transactionsTPS.key}
@@ -371,7 +374,7 @@ transaction status define as whether a transaction successfully done or transact
             lineDataKey="AVG TPS"
           />
 
-          <HeaderSection title="7. Block Age" />
+          <HeaderSection title="Block Age" />
           <LineChartWithBar
             data={transactionsBlockAge.data}
             queryLink={transactionsBlockAge.key}

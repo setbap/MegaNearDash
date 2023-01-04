@@ -88,13 +88,12 @@ const DesktopLinkNav = () => {
                 router.push(link.path);
               }}
               key={link.name}
+              leftIcon={link.icon({})}
             >
               {link.name}
             </Button>
           ))}
         </Box>
-
-        {router.pathname !== "/about" && <CurrentStatusPage />}
       </Box>
     </Box>
   );
@@ -148,15 +147,14 @@ const DesktopTopNav = () => {
       />
 
       <Box experimental_spaceX={"2"} mr={"4"} textAlign="end">
+        {router.pathname !== "/about" && <CurrentStatusPage />}
         <IconButton
           zIndex={1}
-          bg="#fff2"
           size={"sm"}
           onClick={() => router.push("/about")}
           aria-label="About"
           icon={<FiInfo />}
         />
-
         <ThemeToggle />
       </Box>
     </Flex>

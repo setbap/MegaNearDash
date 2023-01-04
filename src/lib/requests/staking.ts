@@ -22,7 +22,7 @@ export const getStakingNearOvertime = () =>
 const _getStakingOvertime = () =>
   getSimpleArrayData<StakingOvertime, StakingOvertime>(
     "8102dd8e-0ea3-45f4-bb26-b01aebd02df2",
-    "3. Weekly number of unique users,4. Cumulative number of staking transactions,5. Cumulative volume of staking transactions,1. Weekly number of staking transactions,2. Weekly total volume of staking transactions",
+    "Weekly number of unique users,Cumulative number of staking transactions,Cumulative volume of staking transactions,Weekly number of staking transactions,Weekly total volume of staking transactions",
     "Day"
   );
 
@@ -99,7 +99,7 @@ export const getStakingOvertime = async () => {
 export const getStakingDailyAverage = () =>
   getSimpleArrayData<StakingDailyAverage, StakingDailyAverage>(
     "14cc6878-d474-4569-b040-7e76850c9382",
-    "4. Average transactions volume,1. Daily number of transactions,2. Daily number of unique users,3. Daily volume of transactions"
+    "Average transactions volume,Daily number of transactions,Daily number of unique users,Daily volume of transactions"
   );
 
 // 3
@@ -113,26 +113,26 @@ export const getStakingActiveStakingPool = () =>
 export const getStakingTop10PoolsTransaction = () =>
   getSimpleArrayData<StakingTop10Pools, StakingTop10Pools>(
     "939ab31b-aea3-4147-a957-803b3aa2f0cc",
-    "2. Top 10 pools based on staking transactions"
+    "Top 10 pools based on staking transactions"
   );
 
 export const getStakingTop10PoolsUniqueStakers = () =>
   getSimpleArrayData<StakingTop10Pools, StakingTop10Pools>(
     "0db3ec76-011b-4fa7-b68d-4b1a3c738ada",
-    "2. Top 10 pools based on unique stakers"
+    "Top 10 pools based on unique stakers"
   );
 
 export const getStakingTop10PoolsVolume = () =>
   getSimpleArrayData<StakingTop10Pools, StakingTop10Pools>(
     "2a8ff3ad-34a3-4b64-84da-3f1418247db8",
-    "2. Top 10 pools based on staking volume"
+    "Top 10 pools based on staking volume"
   );
 
 // 5
 export const _getStakingTop10PoolsWithDayTransaction = () =>
   getSimpleArrayData<StakingTop10PoolsWithDay, StakingTop10PoolsWithDay>(
     "67c117d3-2647-45cf-a6aa-1ce35ecf1bf9",
-    "1. Weekly top 10 pools based on staking transactions"
+    "Weekly top 10 pools based on staking transactions"
   );
 
 export const getStakingTop10PoolsWithDayTransaction: () => Promise<
@@ -169,7 +169,7 @@ export const getStakingTop10PoolsWithDayTransaction: () => Promise<
 export const _getStakingTop10PoolsWithDayUniqueStakers = () =>
   getSimpleArrayData<StakingTop10PoolsWithDay, StakingTop10PoolsWithDay>(
     "01502bc8-c8ad-4299-b5cb-e3d2e46d203c",
-    "1. Weekly top 10 pools based on staking unique stakers"
+    "Weekly top 10 pools based on staking unique stakers"
   );
 
 export const getStakingTop10PoolsWithDayUniqueStakers: () => Promise<
@@ -206,7 +206,7 @@ export const getStakingTop10PoolsWithDayUniqueStakers: () => Promise<
 export const _getStakingTop10PoolsWithDayUniqueVolume = () =>
   getSimpleArrayData<StakingTop10PoolsWithDay, StakingTop10PoolsWithDay>(
     "5d43109b-1730-4d81-8dcb-6a0891fdf859",
-    "1. Weekly top 10 pools based on staking volume"
+    "Weekly top 10 pools based on staking volume"
   );
 export const getStakingTop10PoolsWithDayUniqueVolume: () => Promise<
   ReturnDataType<any>

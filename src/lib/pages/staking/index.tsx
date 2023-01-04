@@ -131,14 +131,14 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsa cumque inv
             data={stakingNearOvertime.data}
           />
 
-          {["cumTXCount", "tXCount", "cumVolume", "uniqueWallet", "volume"].map(
-            (item, index) => (
+          {[["uniqueWallet", 3], ["volume", 4], ["cumTXCount", 0], ["tXCount", 1], ["cumVolume", 2]].map(
+            ([item, type], index) => (
               <StackedAreaChart
                 key={index}
                 values={stakingOvertime.data[item]}
                 queryLink={stakingOvertime.key}
                 modalInfo=""
-                title={stakingOvertimeNames[index]}
+                title={stakingOvertimeNames[type as number]}
                 baseSpan={1}
                 dataKey="Name"
                 oyLabel="$Near"
@@ -155,25 +155,25 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsa cumque inv
 
           <HeaderSection title="Daily average" />
           {[
-            "AVG TX volume",
-            "AVG tx count",
-            "AVG unique wallet",
-            "AVG volume",
-          ].map((item, index) => (
+            ["AVG tx count", 1],
+            ["AVG unique wallet", 2],
+            ["AVG volume", 3],
+            ["AVG TX volume", 0],
+          ].map(([item, type], index) => (
             <BarGraph
               key={item}
               values={stakingDailyAverage.data}
               queryLink={stakingDailyAverage.key}
               modalInfo=""
               isNotDate
-              title={stakingDailyAverageNames[index]}
+              title={stakingDailyAverageNames[type as number]}
               baseSpan={1}
               dataKey="Actions"
               oyLabel="$Luna"
               oxLabel="Action"
               labels={[
                 {
-                  key: item,
+                  key: item as string,
                   color: colors[index],
                 },
               ]}

@@ -76,37 +76,6 @@ according section defined in above, i prepare some of static about these topics.
           columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
           spacing={{ base: 5, lg: 8 }}
         >
-          <StatsCard
-            stat={nFTTotalInfo.data["Total Sales Volume (in USD)"]}
-            title={nFTTotalInfoName[0]}
-            status="inc"
-            hasArrowIcon={false}
-            link={nFTTotalInfo.key}
-          />
-
-          <StatsCard
-            stat={nFTTotalInfo.data["Total Sales Count"]}
-            title={nFTTotalInfoName[3]}
-            status="inc"
-            hasArrowIcon={false}
-            link={nFTTotalInfo.key}
-          />
-
-          <StatsCard
-            stat={nFTTotalInfo.data["Total Unique Buyers"]}
-            title={nFTTotalInfoName[1]}
-            status="inc"
-            hasArrowIcon={false}
-            link={nFTTotalInfo.key}
-          />
-
-          <StatsCard
-            stat={nFTTotalInfo.data["Total Unique Sellers"]}
-            title={nFTTotalInfoName[2]}
-            status="inc"
-            hasArrowIcon={false}
-            link={nFTTotalInfo.key}
-          />
 
           <StatsCard
             stat={nFTTotalDailyInfo.data["Daily Sales Volume (in USD)"]}
@@ -117,11 +86,11 @@ according section defined in above, i prepare some of static about these topics.
           />
 
           <StatsCard
-            stat={nFTTotalDailyInfo.data["Daily NFT Price (in USD)"]}
-            title={nFTTotalDailyInfoName[1]}
+            stat={nFTTotalInfo.data["Total Sales Volume (in USD)"]}
+            title={nFTTotalInfoName[0]}
             status="inc"
             hasArrowIcon={false}
-            link={nFTTotalDailyInfo.key}
+            link={nFTTotalInfo.key}
           />
 
           <StatsCard
@@ -133,11 +102,27 @@ according section defined in above, i prepare some of static about these topics.
           />
 
           <StatsCard
+            stat={nFTTotalInfo.data["Total Sales Count"]}
+            title={nFTTotalInfoName[3]}
+            status="inc"
+            hasArrowIcon={false}
+            link={nFTTotalInfo.key}
+          />
+
+          <StatsCard
             stat={nFTTotalDailyInfo.data["Daily Unique Buyers"]}
             title={nFTTotalDailyInfoName[3]}
             status="inc"
             hasArrowIcon={false}
             link={nFTTotalDailyInfo.key}
+          />
+
+          <StatsCard
+            stat={nFTTotalInfo.data["Total Unique Buyers"]}
+            title={nFTTotalInfoName[1]}
+            status="inc"
+            hasArrowIcon={false}
+            link={nFTTotalInfo.key}
           />
 
           <StatsCard
@@ -147,6 +132,24 @@ according section defined in above, i prepare some of static about these topics.
             hasArrowIcon={false}
             link={nFTTotalDailyInfo.key}
           />
+
+          <StatsCard
+            stat={nFTTotalInfo.data["Total Unique Sellers"]}
+            title={nFTTotalInfoName[2]}
+            status="inc"
+            hasArrowIcon={false}
+            link={nFTTotalInfo.key}
+          />
+
+
+          <StatsCard
+            stat={nFTTotalDailyInfo.data["Daily NFT Price (in USD)"]}
+            title={nFTTotalDailyInfoName[1]}
+            status="inc"
+            hasArrowIcon={false}
+            link={nFTTotalDailyInfo.key}
+          />
+
         </SimpleGrid>
 
         <SimpleGrid
@@ -164,7 +167,7 @@ according section defined in above, i prepare some of static about these topics.
             data={nFTSelling.data}
             queryLink={nFTSelling.key}
             title={nFTSellingName[5]}
-            baseSpan={3}
+            baseSpan={2}
             customColor={colors[0]}
             barColor={colors[2]}
             xAxisDataKey="Day"
@@ -172,7 +175,15 @@ according section defined in above, i prepare some of static about these topics.
             lineDataKey="AVG Sales Count"
             additionalLineKey={["MA7 Sales Count"]}
           />
-
+          <ChartBox
+            xAxisDataKey={"Day"}
+            areaDataKey={"Cum Sales Count"}
+            title={nFTSellingName[2]}
+            baseSpan={1}
+            customColor={colors[0]}
+            queryLink={nFTSelling.key}
+            data={nFTSelling.data}
+          />
           <StackedAreaChart
             values={nFTSelling.data}
             queryLink={nFTSelling.key}
@@ -197,7 +208,7 @@ according section defined in above, i prepare some of static about these topics.
             data={nFTSelling.data}
             queryLink={nFTSelling.key}
             title={nFTSellingName[0]}
-            baseSpan={3}
+            baseSpan={2}
             customColor={colors[0]}
             barColor={colors[2]}
             xAxisDataKey="Day"
@@ -205,7 +216,6 @@ according section defined in above, i prepare some of static about these topics.
             lineDataKey="AVG Sales Volume"
             additionalLineKey={["MA7 Sales Volume"]}
           />
-
           <ChartBox
             xAxisDataKey={"Day"}
             areaDataKey={"Cum Sales Volume"}
@@ -215,15 +225,9 @@ according section defined in above, i prepare some of static about these topics.
             queryLink={nFTSelling.key}
             data={nFTSelling.data}
           />
-          <ChartBox
-            xAxisDataKey={"Day"}
-            areaDataKey={"Cum Sales Count"}
-            title={nFTSellingName[2]}
-            baseSpan={1}
-            customColor={colors[0]}
-            queryLink={nFTSelling.key}
-            data={nFTSelling.data}
-          />
+
+
+
 
           <LineChartWithBar
             data={nFTSelling.data}

@@ -24,30 +24,30 @@ export const getNFTTotalDailyInfo = () =>
 export const getNFTSelling = () =>
   getSimpleArrayData<NFTSelling, NFTSelling>(
     "62d913fe-edc2-489e-9ea0-f21b9fe12c6a",
-    "3. Weekly volume (in USD) of NFTs sold,3. Cumulative volume (in USD) of NFTs sold,1. Cumulative number of NFTs sold,4. Weekly average NFT price (in USD),2. Weekly number of NFT buyers Vs. sellers,1. Weekly number of NFTs sold",
+    "Weekly volume (in USD) of NFTs sold,Cumulative volume (in USD) of NFTs sold,Cumulative number of NFTs sold,Weekly average NFT price (in USD),Weekly number of NFT buyers Vsellers,Weekly number of NFTs sold",
     "Day"
   );
 
 export const getNFTMarketplaceComparison = () =>
   getSimpleArrayData<NFTMarketplaceComparison, NFTMarketplaceComparison>(
     "7aaca9ac-950b-4f64-900a-7d928e6c136e",
-    "2. Marketplaces share in volume of sale,1. Marketplaces share in number of sale"
+    "Marketplaces share in volume of sale,Marketplaces share in number of sale"
   );
 
 export const getNFTCollectionsTransactions = () =>
   getSimpleArrayData<NFTCollectionsTransactions, NFTCollectionsTransactions>(
     "ff8678a9-f15a-4d4e-9f06-01637da801f6",
-    "1. Top 10 NFT collections based on sold count"
+    "Top 10 NFT collections based on sold count"
   );
 
 export const getNFTCollectionsVolume = () =>
   getSimpleArrayData<NFTCollectionsVolume, NFTCollectionsVolume>(
     "dece9d6e-7d41-4420-b682-34c203f64e9f",
-    "2. Top 10 NFT collections based on volume"
+    "Top 10 NFT collections based on volume"
   );
 
 export const getNFTCollectionsUniqueBuyers = () =>
   getSimpleArrayData<NFTCollectionsUniqueBuyers, NFTCollectionsUniqueBuyers>(
     "76e22612-5aee-4c96-ae5d-d0ef1b062921",
-    "3. Top 10 NFT collections based on unique buyers"
+    "Top 10 NFT collections based on unique buyers"
   );
