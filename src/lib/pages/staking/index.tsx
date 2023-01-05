@@ -105,11 +105,6 @@ const Staking = ({
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
         <HeaderSection title="Near Staking">
           {`
-
-$NEAR staking
-
-  
-
 NEAR staking is a process by which holders of the NEAR tokens can lock up their tokens in order to become validators on the NEAR Protocol. Staking gives holders the opportunity to earn rewards for their contributions to the network by running a validator node. Rewards are distributed in the form of inflation rewards, transaction fees, and block rewards. The amount of rewards you can receive depends on the amount of NEAR tokens you have staked.
 
   
