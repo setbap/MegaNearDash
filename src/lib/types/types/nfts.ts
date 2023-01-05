@@ -1,3 +1,20 @@
+export interface NFT24HChange {
+  "Day": string,
+  "24h Sales Count": number;
+  "Previous 24h Sales Count": number;
+  "change (%) Sales Count": number;
+  "24h Sales Volume (in USD)": number;
+  "Previous 24h Sales Volume": number;
+  "change (%) Sales Volume": number;
+  "24h Unique Buyers": number;
+  "Previous 24h Unique Buyers": number;
+  "change (%) Unique Buyers": number;
+  "24h Unique Sellers": number;
+  "Previous 24h Unique Sellers": number;
+  "change (%) Unique Sellers": number;
+}
+
+
 export interface NFTTotalInfo {
   "Total Sales Volume (in USD)": number;
   "Total Unique Buyers": number;

@@ -1,5 +1,6 @@
 import NFT from "lib/pages/nft";
 import {
+  getNFT24HChange,
   getNFTCollectionsTransactions,
   getNFTCollectionsUniqueBuyers,
   getNFTCollectionsVolume,
@@ -10,6 +11,7 @@ import {
 } from "lib/requests/nft";
 import { ReturnDataType } from "lib/types/base";
 import {
+  NFT24HChange,
   NFTCollectionsTransactions,
   NFTCollectionsUniqueBuyers,
   NFTCollectionsVolume,
@@ -28,6 +30,7 @@ export async function getStaticProps() {
     nFTCollectionsTransactions,
     nFTCollectionsVolume,
     nFTCollectionsUniqueBuyers,
+    nFT24HChange,
   ] = await Promise.all([
     getNFTTotalInfo(),
     getNFTTotalDailyInfo(),
@@ -36,10 +39,12 @@ export async function getStaticProps() {
     getNFTCollectionsTransactions(),
     getNFTCollectionsVolume(),
     getNFTCollectionsUniqueBuyers(),
+    getNFT24HChange()
   ]);
 
   return {
     props: {
+      nFT24HChange,
       nFTTotalInfo,
       nFTTotalDailyInfo,
       nFTSelling,
@@ -53,6 +58,7 @@ export async function getStaticProps() {
 }
 
 export interface NFTProps {
+  nFT24HChange: ReturnDataType<NFT24HChange>
   nFTTotalInfo: ReturnDataType<NFTTotalInfo>;
   nFTTotalDailyInfo: ReturnDataType<NFTTotalDailyInfo>;
   nFTSelling: ReturnDataType<NFTSelling[]>;

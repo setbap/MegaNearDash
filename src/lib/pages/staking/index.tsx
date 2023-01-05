@@ -177,7 +177,7 @@ Now I describe each section:
                 title={stakingOvertimeNames[type as number]}
                 baseSpan={1}
                 dataKey="Name"
-                oyLabel="$Near"
+                oyLabel=""
                 oxLabel="Action"
                 labels={stakingOvertime.data.actions.map(
                   (item: string, index: number) => ({
@@ -191,11 +191,11 @@ Now I describe each section:
 
           <HeaderSection title="Daily average" />
           {[
-            ["AVG tx count", 1],
-            ["AVG unique wallet", 2],
-            ["AVG volume", 3],
-            ["AVG TX volume", 0],
-          ].map(([item, type], index) => (
+            ["AVG tx count", 1, ""],
+            ["AVG unique wallet", 2, ""],
+            ["AVG volume", 3, "$NEAR"],
+            ["AVG TX volume", 0, "$NEAR"],
+          ].map(([item, type, yLabel], index) => (
             <BarGraph
               key={item}
               values={stakingDailyAverage.data}
@@ -205,7 +205,7 @@ Now I describe each section:
               title={stakingDailyAverageNames[type as number]}
               baseSpan={1}
               dataKey="Actions"
-              oyLabel="$Luna"
+              oyLabel={yLabel as string}
               oxLabel="Action"
               labels={[
                 {

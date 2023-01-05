@@ -1,4 +1,5 @@
 import {
+  NFT24HChange,
   NFTCollectionsTransactions,
   NFTCollectionsUniqueBuyers,
   NFTCollectionsVolume,
@@ -8,6 +9,12 @@ import {
   NFTTotalInfo,
 } from "lib/types/types/nfts";
 import { getSimpleArrayData, getSimpleInfo } from "./utils";
+
+export const getNFT24HChange = () =>
+  getSimpleInfo<NFT24HChange>(
+    "7e861930-6b43-46aa-86d3-c28198cded54",
+    "24h Sales Count, 24h Sales Volume (in USD), 24h Unique Buyers, 24h Unique Sellers"
+  );
 
 export const getNFTTotalInfo = () =>
   getSimpleInfo<NFTTotalInfo>(

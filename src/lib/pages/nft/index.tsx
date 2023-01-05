@@ -3,7 +3,6 @@ import ChartBox from "lib/components/charts/LineChart";
 import { StatsCard } from "lib/components/charts/StateCard";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
-
 import { NFTProps } from "pages/nft";
 import DonutChart from "lib/components/charts/DonutChart";
 import BarGraph from "lib/components/charts/BarGraph";
@@ -34,12 +33,15 @@ const NFT = ({
   nFTCollectionsTransactions,
   nFTCollectionsVolume,
   nFTCollectionsUniqueBuyers,
+  nFT24HChange
 }: NFTProps): JSX.Element => {
   const nFTTotalInfoName = nFTTotalInfo.title.split(",");
   const nFTTotalDailyInfoName = nFTTotalDailyInfo.title.split(",");
   const nFTSellingName = nFTSelling.title.split(",");
   const nFTMarketplaceComparisonName =
     nFTMarketplaceComparison.title.split(",");
+  const nFT24HChangeName =
+    nFT24HChange.title.split(",");
 
   return (
     <>
@@ -64,7 +66,11 @@ const NFT = ({
         }}
       />
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
-        <HeaderSection title="Near Supply " />
+        <HeaderSection title="Near NFT">
+          {`
+NEAR is an open-source blockchain that is well-suited to hosting and trading Non-Fungible Tokens (NFTs). NFTs are digital tokens that represent digital assets, such as artwork, collectibles, or even real-world items like tickets or concert passes. The NEAR protocol enables developers to create, transfer, and trade NFTs in a secure and trustless fashion. It also offers scalability, low transaction fees, and fast transaction times. NEAR has become a popular platform for the creation, trading, and collection of digital assets and NFTs, with many high-profile projects launching on the NEAR blockchain.
+`}
+        </HeaderSection>
         <Box pt={"4"}></Box>
         <HeaderSection title="Glance">
           {`
@@ -149,7 +155,39 @@ according section defined in above, i prepare some of static about these topics.
             hasArrowIcon={false}
             link={nFTTotalDailyInfo.key}
           />
-
+          <HeaderSection title="24h changes" />
+          <StatsCard
+            stat={nFT24HChange.data["24h Sales Count"]}
+            title={nFT24HChangeName[0]}
+            change={nFT24HChange.data["change (%) Sales Count"]}
+            status={nFT24HChange.data["change (%) Sales Count"] >= 0 ? "inc" : 'dec'}
+            hasArrowIcon={true}
+            link={nFT24HChange.key}
+          />
+          <StatsCard
+            stat={nFT24HChange.data["24h Sales Volume (in USD)"]}
+            title={nFT24HChangeName[1]}
+            change={nFT24HChange.data["change (%) Sales Volume"]}
+            status={nFT24HChange.data["change (%) Sales Volume"] >= 0 ? "inc" : 'dec'}
+            hasArrowIcon={true}
+            link={nFT24HChange.key}
+          />
+          <StatsCard
+            stat={nFT24HChange.data["24h Unique Buyers"]}
+            title={nFT24HChangeName[2]}
+            change={nFT24HChange.data["change (%) Unique Buyers"]}
+            status={nFT24HChange.data["change (%) Unique Buyers"] >= 0 ? "inc" : 'dec'}
+            hasArrowIcon={true}
+            link={nFT24HChange.key}
+          />
+          <StatsCard
+            stat={nFT24HChange.data["24h Unique Sellers"]}
+            title={nFT24HChangeName[3]}
+            change={nFT24HChange.data["change (%) Unique Sellers"]}
+            status={nFT24HChange.data["change (%) Unique Sellers"] >= 0 ? "inc" : 'dec'}
+            hasArrowIcon={true}
+            link={nFT24HChange.key}
+          />
         </SimpleGrid>
 
         <SimpleGrid

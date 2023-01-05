@@ -1,12 +1,8 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import ChartBox from "lib/components/charts/LineChart";
-import { StatsCard } from "lib/components/charts/StateCard";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
-
 import { DevelopmentProps } from "pages/development";
-import DonutChart from "lib/components/charts/DonutChart";
-import BarGraph from "lib/components/charts/BarGraph";
 import HeaderSection from "lib/components/basic/HeaderSection";
 import LineChartWithBar from "lib/components/charts/LineChartWithBar";
 
@@ -55,20 +51,11 @@ const Development = ({
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
         <HeaderSection title="Near Development ">
           {`
-in this page we review all information about Near Smart Contract Development and increase usage of different smart contract in Near Network 
-
-
-but before deep dive into chart i prepare some statics to see status of network at the glance.
-`}
-        </HeaderSection>
-        <Box pt={"4"}></Box>
-        <HeaderSection title="Glance">
-          {`
-according section defined in above, i prepare some of static about these topics. all data came from Flipside data and with click of title of each item can see query these data in Flipside Crypto
+A contract in NEAR is a smart contract that is deployed on the NEAR blockchain. Smart contracts are self-executing programs that allow users to store data and execute logic on the blockchain. These contracts are written in a programming language, such as Rust or AssemblyScript, and are then deployed to the network. Once deployed, they can be interacted with and used by users on the network. Contracts can be used to create decentralized applications, tokenize assets, and much more.
 `}
         </HeaderSection>
         <SimpleGrid
-          my={"6"}
+          mb={"4"}
           columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
           spacing={{ base: 5, lg: 8 }}
         ></SimpleGrid>
@@ -80,7 +67,7 @@ Development of Contracts show how much of compatibility of one network is used b
         <SimpleGrid
           position={"relative"}
           transition={"all 0.9s ease-in-out"}
-          py={"6"}
+          py={"4"}
           gap={4}
           zIndex={100}
           columns={{ sm: 1, md: 1, lg: 2, "2xl": 3 }}
