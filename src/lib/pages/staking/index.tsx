@@ -105,7 +105,48 @@ const Staking = ({
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
         <HeaderSection title="Near Staking">
           {`
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsa cumque inventore fugiat modi qui reiciendis possimus iste blanditiis, dolorum similique explicabo eius ipsum veniam aspernatur ut, laborum consectetur sapiente. Aspernatur ipsum odit dolorem harum vero id! Distinctio, libero a.
+
+$NEAR staking
+
+  
+
+NEAR staking is a process by which holders of the NEAR tokens can lock up their tokens in order to become validators on the NEAR Protocol. Staking gives holders the opportunity to earn rewards for their contributions to the network by running a validator node. Rewards are distributed in the form of inflation rewards, transaction fees, and block rewards. The amount of rewards you can receive depends on the amount of NEAR tokens you have staked.
+
+  
+
+Unstaking $NEAR tokens from the NEAR Protocol can take up to 72 hours after initiating the unstaking process. During this time, your tokens will be locked and you will not be able to access them. After 72 hours, your unstaked $NEAR will show up in your lockup account of the NEAR wallet and can then be used or transferred as usual
+
+  
+
+Now I describe each section:
+
+  
+
+* **Staking Over time:** In this section, you could see some simple metrics include number of staking transactions and stakers, volume of staking transactions, and also total $NEAR staked over time.
+
+  
+
+* **Daily average:** In this section, you can see on average, how much $NEAR was staked per day. how many staked their $NEAR per day. How many staking transactions were made per day. Only the last three months are considered.
+
+  
+
+* **Active Staking validators:** Shows the number of validators have been used to staking per certain period.
+
+  
+
+* **Top validators:** Tried to find top validators in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **Weekly top 10 validators:** Tried to find weekly top 10 validators in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **Top validators based on current power:** Validator power is a measure of the amount of stake that is delegated to a validator. In this section, tried to find top validators in terms of current amount of stake they have.
+
+  
+
+* **Top stakers:** This section show the most active stakers, those who staked the most amount of token. Also, I showed the validators they use.
 `}
         </HeaderSection>
 
