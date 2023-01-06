@@ -3,7 +3,6 @@ import ChartBox from "lib/components/charts/LineChart";
 import { StatsCard } from "lib/components/charts/StateCard";
 import names from "lib/utility/names";
 import { NextSeo } from "next-seo";
-
 import { DefiProps } from "pages/defi";
 import DonutChart from "lib/components/charts/DonutChart";
 import BarGraph from "lib/components/charts/BarGraph";
@@ -74,7 +73,34 @@ const Defi = ({
         }}
       />
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
-        <HeaderSection title="Osmosis DEFI" />
+        <HeaderSection title="Osmosis DEFI">
+          {`
+
+The following topics are shown on this page:
+
+* **Swapping Over time:** In this section, you could see some simple metrics including number of swapping transactions and swappers, volume of swapping transactions, and also average swapping size over time.
+
+  
+
+* **Top Swapping From Assets:** This section shows the most popular swapping from assets in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **Top Swapping To Assets:** This section shows the most popular swapping to assets in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **Top Swapping Pairs:** This section shows the most popular swapping pairs in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **Weekly Top 10 Swapping Pairs:** Tried to find weekly top 10 swapping pairs in terms of number of transactions, number of users and volume of transactions.
+
+  
+
+* **DEXs comparison:** Comparing different swapping platforms is shown in this section. The comparison is in terms of number of transactions, number of users and volume of transactions.
+          `}
+        </HeaderSection>
         <Box pt={"4"}></Box>
         <HeaderSection title="Glance">
           {`
