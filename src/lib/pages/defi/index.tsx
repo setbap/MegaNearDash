@@ -73,7 +73,7 @@ const Defi = ({
         }}
       />
       <Box mx={"auto"} pt="4" px={{ base: 3, sm: 2, md: 8 }}>
-        <HeaderSection title="Osmosis DEFI">
+        <HeaderSection title="Near DEFI">
           {`
 
 The following topics are shown on this page:
