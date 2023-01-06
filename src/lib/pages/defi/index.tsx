@@ -53,11 +53,11 @@ const Defi = ({
   return (
     <>
       <NextSeo
-        title={`Osmosis | Defi`}
+        title={`Near | Defi`}
         description={`Track the latest stats and trends on ${names.BLOCKCHAIN}`}
         openGraph={{
           url: `https://${names.SITE_URL}/`,
-          title: `Osmosis  | Defi`,
+          title: `Near  | Defi`,
           description: `Track the latest stats and trends on ${names.BLOCKCHAIN}`,
           images: [
             {
