@@ -33,24 +33,23 @@ const NFT = ({
   nFTCollectionsTransactions,
   nFTCollectionsVolume,
   nFTCollectionsUniqueBuyers,
-  nFT24HChange
+  nFT24HChange,
 }: NFTProps): JSX.Element => {
   const nFTTotalInfoName = nFTTotalInfo.title.split(",");
   const nFTTotalDailyInfoName = nFTTotalDailyInfo.title.split(",");
   const nFTSellingName = nFTSelling.title.split(",");
   const nFTMarketplaceComparisonName =
     nFTMarketplaceComparison.title.split(",");
-  const nFT24HChangeName =
-    nFT24HChange.title.split(",");
+  const nFT24HChangeName = nFT24HChange.title.split(",");
 
   return (
     <>
       <NextSeo
-        title={`Near | Supply`}
+        title={`Near | NFT`}
         description={`Track the latest stats and trends on ${names.BLOCKCHAIN}`}
         openGraph={{
           url: `https://${names.SITE_URL}/`,
-          title: `Near  | Supply`,
+          title: `Near  | NFT`,
           description: `Track the latest stats and trends on ${names.BLOCKCHAIN}`,
           images: [
             {
@@ -82,7 +81,6 @@ according section defined in above, i prepare some of static about these topics.
           columns={{ base: 1, md: 2, lg: 2, "2xl": 3 }}
           spacing={{ base: 5, lg: 8 }}
         >
-
           <StatsCard
             stat={nFTTotalDailyInfo.data["Daily Sales Volume (in USD)"]}
             title={nFTTotalDailyInfoName[0]}
@@ -147,7 +145,6 @@ according section defined in above, i prepare some of static about these topics.
             link={nFTTotalInfo.key}
           />
 
-
           <StatsCard
             stat={nFTTotalDailyInfo.data["Daily NFT Price (in USD)"]}
             title={nFTTotalDailyInfoName[1]}
@@ -160,7 +157,9 @@ according section defined in above, i prepare some of static about these topics.
             stat={nFT24HChange.data["24h Sales Count"]}
             title={nFT24HChangeName[0]}
             change={nFT24HChange.data["change (%) Sales Count"]}
-            status={nFT24HChange.data["change (%) Sales Count"] >= 0 ? "inc" : 'dec'}
+            status={
+              nFT24HChange.data["change (%) Sales Count"] >= 0 ? "inc" : "dec"
+            }
             hasArrowIcon={true}
             link={nFT24HChange.key}
           />
@@ -168,7 +167,9 @@ according section defined in above, i prepare some of static about these topics.
             stat={nFT24HChange.data["24h Sales Volume (in USD)"]}
             title={nFT24HChangeName[1]}
             change={nFT24HChange.data["change (%) Sales Volume"]}
-            status={nFT24HChange.data["change (%) Sales Volume"] >= 0 ? "inc" : 'dec'}
+            status={
+              nFT24HChange.data["change (%) Sales Volume"] >= 0 ? "inc" : "dec"
+            }
             hasArrowIcon={true}
             link={nFT24HChange.key}
           />
@@ -176,7 +177,9 @@ according section defined in above, i prepare some of static about these topics.
             stat={nFT24HChange.data["24h Unique Buyers"]}
             title={nFT24HChangeName[2]}
             change={nFT24HChange.data["change (%) Unique Buyers"]}
-            status={nFT24HChange.data["change (%) Unique Buyers"] >= 0 ? "inc" : 'dec'}
+            status={
+              nFT24HChange.data["change (%) Unique Buyers"] >= 0 ? "inc" : "dec"
+            }
             hasArrowIcon={true}
             link={nFT24HChange.key}
           />
@@ -184,7 +187,11 @@ according section defined in above, i prepare some of static about these topics.
             stat={nFT24HChange.data["24h Unique Sellers"]}
             title={nFT24HChangeName[3]}
             change={nFT24HChange.data["change (%) Unique Sellers"]}
-            status={nFT24HChange.data["change (%) Unique Sellers"] >= 0 ? "inc" : 'dec'}
+            status={
+              nFT24HChange.data["change (%) Unique Sellers"] >= 0
+                ? "inc"
+                : "dec"
+            }
             hasArrowIcon={true}
             link={nFT24HChange.key}
           />
@@ -263,9 +270,6 @@ according section defined in above, i prepare some of static about these topics.
             queryLink={nFTSelling.key}
             data={nFTSelling.data}
           />
-
-
-
 
           <LineChartWithBar
             data={nFTSelling.data}
